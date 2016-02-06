@@ -1,0 +1,6 @@
+{
+	"http_port": 1288,
+	"ws_port": 8821,
+	"networktable": "SmartDashboard",
+	"robot_ip": "127.0.0.1"
+}
