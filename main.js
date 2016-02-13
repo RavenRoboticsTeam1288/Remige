@@ -72,7 +72,14 @@ $(document).ready(function() {
             for(var key in newFormData) {
                 if(newFormData.hasOwnProperty(key)) {
                     var value = newFormData[key];
-                    $("input[name=" + key + "]").val(value);
+                    var $input = $("input[name=" + key + "]");
+                    if($input.attr("type") === "radio") {
+                        $input.prop("checked", false);
+                        $("input[value=" + value + "]").prop("checked", true);
+                    }
+                    else {
+                        $input.val(value);
+                    }
                 }
             }
             updating = false;
