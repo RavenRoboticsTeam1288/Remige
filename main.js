@@ -89,5 +89,16 @@ $(document).ready(function() {
             updateSeverConnection("Closed");
             $formInputs.prop('disabled', true);
         };
+
+        if(config.image_streams) {
+            var $streams = $("#streams");
+            for(var i = 0; i < config.image_streams.length; i++) {
+                var steam = config.image_streams[i];
+
+                $("<img>")
+                    .attr("src", "http://" + config.robot_ip + ":" + steam.port + steam.path)
+                    .appendTo($streams);
+            }
+        }
     });
 });
