@@ -17,6 +17,13 @@ $(document).ready(function() {
         var data = {};
         for(var i = 0; i < $formInputs.length; i++) {
             var $input = $($formInputs[i]);
+
+            if($input.attr("type") === "radio") { // then it has to be "checked" to be a value
+                if(!$input.is(':checked')) {
+                    continue;
+                }
+            }
+
             data[$input.attr("name")] = $input.val();
         }
 
