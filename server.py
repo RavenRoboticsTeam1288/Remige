@@ -34,8 +34,11 @@ ws_server.set_fn_new_client(new_client)
 ws_server.set_fn_message_received(message_received)
 
 class ConnectionListener:
+    def __init__(self):
+        self._first_disconnect = True # we want to ignore the first disconnect event as it's always disconnected at init
+
     def connected(self, table):
-        print("Connected to", table)
+        print("NetworksTables connected to", table)
         shared_dict["robot_status"] = "connected"
         ws_server.send_message_to_all(json.dumps(shared_dict))
 
@@ -44,7 +47,11 @@ class ConnectionListener:
             table.putValue(key, value)
 
     def disconnected(self, table):
-        print("Disconnected from", table)
+        if self._first_disconnect:
+            self._first_disconnect = False
+            return
+
+        print("NetworkTabes disconnected from", table)
         shared_dict["robot_status"] = "disconnected"
         ws_server.send_message_to_all(json.dumps(shared_dict))
 
