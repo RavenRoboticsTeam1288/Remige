@@ -1,0 +1,39 @@
+<script type="text/javascript">
+// This is a simple script that will open Remige at a specific position and location,
+// Usage: open this at localhost:1288/open.html?pos=POSXxPOSY&size=WIDTHxHEIGHT replaceing the all caps variables with what you want. This is intended for driver station usage
+var w = window.open('http://localhost:1288/','Regime','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no');
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+};
+
+var pos = getParameterByName("pos");
+var size = getParameterByName("size");
+
+if(pos) {
+    var split = pos.split("x");
+    var x = parseInt(split[0]);
+    var y = parseInt(split[1]);
+    if(x !== undefined && y !== undefined) {
+        console.log("moving window to", x, y);
+        w.moveTo(x, y);
+    }
+}
+
+if(size) {
+    var split = size.split("x");
+    var width = parseInt(split[0]);
+    var height = parseInt(split[1]);
+    if(width && height) {
+        console.log("resizing window to", width, height);
+        w.resizeTo(width, height);
+    }
+}
+
+</script>
