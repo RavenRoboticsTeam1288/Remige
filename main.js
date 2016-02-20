@@ -9,8 +9,13 @@ $(document).ready(function() {
         $serverConnection.html(str);
     };
 
+    var $imgs = [];
     function updateRobotConnection(str) {
         $robotConnection.html(str);
+        for(var i = 0; i < $imgs.length; i++) {
+            var $img = $imgs[i];
+            $img.attr("src", $img.attr("src")); // reload
+        }
     };
 
     function getFormData() {
@@ -97,14 +102,16 @@ $(document).ready(function() {
             $formInputs.prop('disabled', true);
         };
 
+        
         if(config.image_streams) {
             var $streams = $("#streams");
             for(var i = 0; i < config.image_streams.length; i++) {
                 var steam = config.image_streams[i];
 
-                $("<img>")
+                $imgs.push($("<img>")
                     .attr("src", "http://" + config.robot_ip + ":" + steam.port + steam.path)
-                    .appendTo($streams);
+                    .appendTo($streams)
+                );
             }
         }
     });
