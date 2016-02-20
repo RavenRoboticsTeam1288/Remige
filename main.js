@@ -12,6 +12,7 @@ $(document).ready(function() {
 
     var $imgs = [];
     function updateRobotConnection(str) {
+        str = str.charAt(0).toUpperCase() + str.slice(1); // capitalize the first letter
         $robotConnection.html(str);
         for(var i = 0; i < $imgs.length; i++) {
             var $img = $imgs[i];
@@ -48,7 +49,7 @@ $(document).ready(function() {
 
         var updating = false; // poor man's mutex lock
         wsClient.onopen = function (e) {
-            updateSeverConnection("Connected!");
+            updateSeverConnection("Connected");
 
             var send = function(data) {
                 var str = JSON.stringify(data);

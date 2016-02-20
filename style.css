@@ -95,7 +95,7 @@ input[type="radio"]:checked + label {
 #streams {
     width: 50%;
     height: 100%;
-    background: #aaa;
+    background: #57116f;
     top: 0;
     left: 0;
     text-align: center;
