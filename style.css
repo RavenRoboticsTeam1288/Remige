@@ -8,15 +8,54 @@ html, body {
 }
 
 #main {
+    position: absolute;
     width: 100%;
     height: 100%;
     background-color: #ccc;
+}
 
+#maximize {
+    position: absolute;
+    bottom: 54px;
+    right: 50%;
+    font-weight: bold;
+    display: block;
+    font-size: 2em;
+    cursor: pointer;
+
+    -webkit-transition: right 1s;
+    transition: right 1s;
+}
+
+#maximize:before {
+    content: "→ ";
+}
+
+.maximized #maximize:before {
+    content: "← ";
+}
+
+.maximized #maximize {
+    right: 0;
 }
 
 #remige {
-    float: left;
+    position: absolute;
+    top: 0;
+    right: 0;
     width: 50%;
+    z-index: 1000;
+    opacity: 1;
+    padding: 0.25em;
+}
+
+#remige * {
+    -webkit-transition: opacity 1s;
+    transition: opacity 1s;
+}
+
+.maximized #remige * {
+    opacity: 0;
 }
 
 h1 {
@@ -54,25 +93,41 @@ input[type="radio"]:checked + label {
 }
 
 #streams {
-    float: right;
     width: 50%;
-    max-height: 100%;
+    height: 100%;
+    background: #aaa;
+    top: 0;
+    left: 0;
+    text-align: center;
+
+    -webkit-transition: width 1s;
+    transition: width 1s;
+    z-index: 1002;
+    border-right: 2px solid black;
 }
 
 #streams img {
-    width: 50%;
+    width: 46%;
     height: auto;
+    max-height: 276px;
+    max-width: 368px;
+    border: 4px solid black;
+    border-radius: 3px;
+    margin: 4px 2% 0 4px;
+}
+
+.maximized #streams {
+    width: 100%;
 }
 
 #status {
-    position: relative;
+    position: absolute;
     bottom: 0;
+    left: 0;
     width: 100%;
     background: #000;
     color: #ccc;
-    margin-top: -3em;
     padding: 1em;
-    padding-bottom: 2em;
 }
 
 #status section {

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    var $body = $("body");
     var $form = $("#remige");
     var $formInputs = $("input", $form); // Note: we cache this, so if you are dynamically adding in inputs don't cache it
 
@@ -34,6 +35,10 @@ $(document).ready(function() {
 
         return data;
     };
+
+    var $maximize = $("#maximize").on("click", function() {
+        $body.toggleClass("maximized");
+    });
 
     updateSeverConnection("Connecting...");
     $.getJSON("/config.json", function(config) {
