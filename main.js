@@ -65,7 +65,7 @@ $(document).ready(function() {
                 return;
             }
 
-            updateRobotConnection(parsed.robot_status)
+            updateRobotConnection(parsed.robot_status);
 
             updating = true;
             var newFormData = parsed.form;

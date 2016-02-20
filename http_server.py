@@ -19,7 +19,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         return # be quite!
 
     def do_GET(self):
-        local_path = self.path[1:]
+        local_path = self.path[1:].split("?")[0]
         if local_path.endswith("/") or len(local_path) == 0:
             local_path = local_path + "index.html"
 
