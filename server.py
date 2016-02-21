@@ -22,12 +22,13 @@ def new_client(client, server):
 
 # Called when a client sends a message
 def message_received(client, server, message):
-    print("Client(%d) said: %s" % (client['id'], message))
-    shared_dict["form"] = json.loads(message)
-    server.send_message_to_all(json.dumps(shared_dict))
+    if message != "PING":
+        print("Client(%d) said: %s" % (client['id'], message))
+        shared_dict["form"] = json.loads(message)
+        server.send_message_to_all(json.dumps(shared_dict))
 
-    for key, value in shared_dict["form"].items():
-        networktable.putValue(key, value)
+        for key, value in shared_dict["form"].items():
+            networktable.putValue(key, value)
 
 ws_server = WebsocketServer(config['ws_port'])
 ws_server.set_fn_new_client(new_client)
