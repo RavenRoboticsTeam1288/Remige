@@ -40,6 +40,7 @@ html, body {
 }
 
 #remige {
+    text-align: center;
     position: absolute;
     top: 0;
     right: 0;
@@ -62,6 +63,14 @@ h1 {
     font-size: 1.5em;
 }
 
+#remige h1 {
+    margin-bottom: 1em;
+}
+
+#remige > section {
+    margin-top: 1em;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
 }
@@ -80,6 +89,12 @@ input[type="radio"] + label {
     padding: 0.25em;
     margin: 0.125em 0.25em;
     display: inline-block;
+}
+
+input[type="radio"]:disabled + label {
+    color: #777;
+    background: #aaa;
+    border-color: #777;
 }
 
 input[type="radio"]:checked + label {
@@ -116,6 +131,15 @@ input[type="radio"]:checked + label {
     margin: 4px 2% 0 4px;
 }
 
+#streams img.errored {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-origin: padding-box;
+    padding: 32px;
+    background-image: url("/error.png");
+}
+
 .maximized #streams {
     width: 100%;
 }
@@ -137,4 +161,16 @@ input[type="radio"]:checked + label {
 
 #status section + section {
     float: right;
+}
+
+#status span.connecting {
+    color: #FFF;
+}
+
+#status span.connected {
+    color: #0F0;
+}
+
+#status span.disconnected {
+    color: #F00;
 }
