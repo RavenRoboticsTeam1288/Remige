@@ -1,0 +1,176 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    max-width: 1024px; /* the width of our driver station's resolution */
+    max-height: 600px;
+}
+
+#main {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+}
+
+#maximize {
+    position: absolute;
+    bottom: 54px;
+    right: 50%;
+    font-weight: bold;
+    display: block;
+    font-size: 2em;
+    cursor: pointer;
+
+    -webkit-transition: right 1s;
+    transition: right 1s;
+}
+
+#maximize:before {
+    content: "→ ";
+}
+
+.maximized #maximize:before {
+    content: "← ";
+}
+
+.maximized #maximize {
+    right: 0;
+}
+
+#remige {
+    text-align: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    z-index: 1000;
+    opacity: 1;
+    padding: 0.25em;
+}
+
+#remige * {
+    -webkit-transition: opacity 1s;
+    transition: opacity 1s;
+}
+
+.maximized #remige * {
+    opacity: 0;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+#remige h1 {
+    margin-bottom: 1em;
+}
+
+#remige > section {
+    margin-top: 1em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+
+input[type="radio"] {
+    -moz-appearance: none; /* Hide the radio button, we are going to make it look like a <button> button */
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+}
+
+input[type="radio"] + label {
+    border: 3px solid #000;
+    border-radius: 0.5em;
+    background: #999;
+    padding: 0.25em;
+    margin: 0.125em 0.25em;
+    display: inline-block;
+}
+
+input[type="radio"]:disabled + label {
+    color: #777;
+    background: #aaa;
+    border-color: #777;
+}
+
+input[type="radio"]:checked + label {
+    border-color: #30093D;
+    border-radius: 0.5em;
+    background-color: #8513AB;
+    color: #fff;
+    padding: 0.25em;
+    margin: 0.125em 0.25em;
+    display: inline-block;
+}
+
+#streams {
+    width: 50%;
+    height: 100%;
+    background: #57116f;
+    top: 0;
+    left: 0;
+    text-align: center;
+
+    -webkit-transition: width 1s;
+    transition: width 1s;
+    z-index: 1002;
+    border-right: 2px solid black;
+}
+
+#streams img {
+    width: 46%;
+    height: auto;
+    max-height: 276px;
+    max-width: 368px;
+    border: 4px solid black;
+    border-radius: 3px;
+    margin: 4px 2% 0 4px;
+}
+
+#streams img.errored {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-origin: padding-box;
+    padding: 32px;
+    background-image: url("/error.png");
+}
+
+.maximized #streams {
+    width: 100%;
+}
+
+#status {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #000;
+    color: #ccc;
+    padding: 1em;
+}
+
+#status section {
+    display: inline;
+    float: left;
+}
+
+#status section + section {
+    float: right;
+}
+
+#status span.connecting {
+    color: #FFF;
+}
+
+#status span.connected {
+    color: #0F0;
+}
+
+#status span.disconnected {
+    color: #F00;
+}

@@ -1,16 +1,30 @@
 $(document).ready(function() {
+    var $body = $("body");
     var $form = $("#remige");
-    var $formInputs = $("input", $form); // Note: we cache this, so if you are dynamically adding in inputs don't cache it
+    var $formInputs = $("input", $form).prop("disabled", true); // Note: we cache this, so if you are dynamically adding in inputs don't cache it
 
     var $robotConnection = $("#robot-connection");
     var $serverConnection = $("#server-connection");
 
-    function updateSeverConnection(str) {
-        $serverConnection.html(str);
+    function updateSeverConnection(str, onlyClass) {
+        $serverConnection
+            .html(str)
+            .attr("class", "")
+            .addClass(onlyClass);
     };
 
+    var $imgs = [];
     function updateRobotConnection(str) {
-        $robotConnection.html(str);
+        var cap = str.charAt(0).toUpperCase() + str.slice(1); // capitalize the first letter
+        $robotConnection.html(cap);
+        $robotConnection.addClass(str);
+
+        for(var i = 0; i < $imgs.length; i++) {
+            var $img = $imgs[i];
+            $img
+                .removeClass("errored")
+                .attr("src", $img.realSRC); // reload
+        }
     };
 
     function getFormData() {
@@ -30,15 +44,32 @@ $(document).ready(function() {
         return data;
     };
 
-    updateSeverConnection("Connecting...");
-    $.getJSON("/config.json", function(config) {
-        updateSeverConnection("Establishing WS Connection...");
+    var $maximize = $("#maximize").on("click", function() {
+        if($body.hasClass("maximized")) {
+            $form.show();
+        }
+        else {
+            setTimeout(function() {
+                $form.hide();
+            }, 1000);
+        }
 
-        var wsClient = new WebSocket("ws://localhost:" + config["ws_port"]);
+        setTimeout(function() {
+            $body.toggleClass("maximized");
+        }, 10);
+    });
+
+    updateSeverConnection("Connecting...", "connecting");
+    $.getJSON("/config.json", function(config) {
+        updateSeverConnection("Establishing WS Connection...", "connecting");
+
+        var wsClient = new WebSocket("ws://" + window.location.hostname + ":" + config["ws_port"]);
 
         var updating = false; // poor man's mutex lock
+        var connected = false;
         wsClient.onopen = function (e) {
-            updateSeverConnection("Connected!");
+            connected = true;
+            updateSeverConnection("Connected", "connected");
 
             var send = function(data) {
                 var str = JSON.stringify(data);
@@ -56,12 +87,14 @@ $(document).ready(function() {
         wsClient.onmessage = function(e) {
             console.log("GOT: <- " + e.data);
 
+            $formInputs.prop("disabled", false);
+
             var parsed;
             try {
                 parsed = JSON.parse(e.data);
             }
             catch(err) {
-                updateSeverConnection("Sent invalid JSON...");
+                updateSeverConnection("Invalid JSON Sent", "disconnected");
                 return;
             }
 
@@ -87,14 +120,36 @@ $(document).ready(function() {
 
         wsClient.onerror = function() {
             console.log("socket errored");
-            updateSeverConnection("Errored");
+            updateSeverConnection("Errored", "disconnected");
             $formInputs.prop('disabled', true);
         };
 
         wsClient.onclose = function() {
             console.log("connection closed");
-            updateSeverConnection("Closed");
+            updateSeverConnection(connected ? "Connection Closed" : "Could Not Connect", "disconnected");
             $formInputs.prop('disabled', true);
         };
+
+        if(config.image_streams) {
+            var $streams = $("#streams");
+            for(var i = 0; i < config.image_streams.length; i++) {
+                var stream = config.image_streams[i];
+                var title = stream.title || "Camera " + (i+1);
+
+                var $img = $("<img>")
+                    .attr("src", "http://" + config.robot_ip + ":" + stream.port + stream.path)
+                    .attr("alt", title + " (OFFLINE)")
+                    .attr("title", title)
+                    .appendTo($streams)
+                    .on("error", function(e) { // it failed to load, probably because we are disconnected from the Robot
+                        $(this)
+                            .attr("src", "/blank.png")
+                            .addClass("errored");
+                    });
+
+                $img.realSRC = $img.attr("src");
+                $imgs.push($img)
+            }
+        }
     });
 });

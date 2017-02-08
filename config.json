@@ -2,5 +2,15 @@
 	"http_port": 1288,
 	"ws_port": 8821,
 	"networktable": "SmartDashboard",
-	"robot_ip": "127.0.0.1"
+	"robot_ip": "roborio-1288-frc.local",
+	"image_streams": [
+		{
+			"port": 5800,
+			"path": "/?action=stream"
+		},
+		{
+			"port": 5801,
+			"path": "/?action=stream"
+		}
+	]
 }

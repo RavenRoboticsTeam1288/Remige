@@ -1,7 +1,7 @@
 <script type="text/javascript">
 // This is a simple script that will open Remige at a specific position and location,
 // Usage: open this at localhost:1288/open.html?pos=POSXxPOSY&size=WIDTHxHEIGHT replaceing the all caps variables with what you want. This is intended for driver station usage
-var w = window.open('http://localhost:1288/','Regime','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no');
+var w = window.open(window.location.origin, 'Regime', 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no');
 
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
@@ -37,3 +37,6 @@ if(size) {
 }
 
 </script>
+<p>
+You can close this window once Regime is up.
+</p>

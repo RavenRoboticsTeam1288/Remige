@@ -1,22 +1,82 @@
 <!DOCTYPE html>
-<html  lang="en">
-<head>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>1288 DriverStation</title>
+		<script src="/jquery-2.2.0.min.js"></script>
+		<script src="/main.js"></script>
 
-	<meta charset="utf-8">
-	<title>1288 DriverStation</title>
-	<script src="/jquery-2.2.0.min.js"></script>
-	<script src="/main.js"></script>
-
-	<link type="text/css" rel="stylesheet" href="style.css"/>
-</head>
+		<link type="text/css" rel="stylesheet" href="reset.css"/>
+		<link type="text/css" rel="stylesheet" href="style.css"/>
+	</head>
 	<body>
-		<form id="remige">
-			<input name="alpha" type="text" value="Alpha" />
-			<input name="beta" type="text" value="Beta" />
-		</form>
+		<div id="main">
+			<div id="streams">
+				<span id="maximize" title="Toggle maximized"></span>
+			</div>
+			<form id="remige">
+				<h1>Team 1288 Remige Driver Station</h1>
+				<p>During Autonomous the robot should</p>
+				<section>
+					<h2>Move In Direction</h2>
+					<span>
+						<input id="left" name="DIRECTION" type="radio" value="left"></input>
+						<label for="left">Left</label>
+					</span>
+					<span>
+						<input id="right" name="DIRECTION" type="radio" value="right"></input>
+						<label for="right">Right</label>
+					</span>
+				</section>
+
+				<section>
+					<h2>Over Obstacle</h2>
+					<span>
+						<input id="low_bar" name="OBSTACLE_TYPE" type="radio" value="low_bar"></input>
+						<label for="low_bar">Low Bar</label>
+					</span>
+					<span>
+						<input id="teeter_totter" name="OBSTACLE_TYPE" type="radio" value="teeter_totter"></input>
+						<label for="teeter_totter">Teeter Totter</label>
+					</span>
+					<span>
+						<input id="portcullis" name="OBSTACLE_TYPE" type="radio" value="portcullis"></input>
+						<label for="portcullis">Portcullis</label>
+					</span>
+					<span>
+						<input id="rock_wall" name="OBSTACLE_TYPE" type="radio" value="rock_wall"></input>
+						<label for="rock_wall">Rock Wall</label>
+					</span>
+					<span>
+						<input id="rough_terrain" name="OBSTACLE_TYPE" type="radio" value="rough_terrain"></input>
+						<label for="rough_terrain">Rough Terrain</label>
+					</span>
+					<span>
+						<input id="moat" name="OBSTACLE_TYPE" type="radio" value="moat"></input>
+						<label for="moat">Moat</label>
+					</span>
+					<span>
+						<input id="ramparts" name="OBSTACLE_TYPE" type="radio" value="ramparts"></input>
+						<label for="ramparts">Ramparts</label>
+					</span>
+					<span>
+						<input id="sally_door" name="OBSTACLE_TYPE" type="radio" value="sally_door"></input>
+						<label for="sally_door">Sally Door</label>
+					</span>
+					<span>
+						<input id="drawbridge" name="OBSTACLE_TYPE" type="radio" value="drawbridge"></input>
+						<label for="drawbridge">Drawbridge</label>
+					</span>
+				</section>
+			</form>
+		</div>
 		<div id="status">
-			<span>Remige Connection:</span> <span id="server-connection">?</span>
-			<span>Robot Connection:</span> <span id="robot-connection">?</span>
+			<section>
+				<span>Remige Connection:</span> <span id="server-connection">Initializing WebSockets</span>
+			</section>
+			<section>
+				<span>Robot Connection:</span> <span id="robot-connection">Awaiting Remige Connection</span>
+			</section>
 		</div>
 	</body>
 </html>
