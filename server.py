@@ -3,6 +3,7 @@ from websocket_server import WebsocketServer # pip package, in python 3.5 you ma
 import http_server
 import networktables_client
 
+
 with open("config.json", "r") as config_file:
     config = json.load(config_file)
 
@@ -34,27 +35,22 @@ ws_server = WebsocketServer(config['ws_port'])
 ws_server.set_fn_new_client(new_client)
 ws_server.set_fn_message_received(message_received)
 
-class ConnectionListener:
-    def __init__(self):
-        self._first_disconnect = True # we want to ignore the first disconnect event as it's always disconnected at init
-
-    def connected(self, table):
-        print("NetworksTables connected to", table)
+def ConnectionListener(isConnected, info):
+    if isConnected:
+        print("NetworksTables connected to", networktable)
         shared_dict["robot_status"] = "connected"
         ws_server.send_message_to_all(json.dumps(shared_dict))
-
+    
         # we may have form data to send to the table while we were disconnected, so update it
         for key, value in shared_dict["form"].items():
-            table.putValue(key, value)
-
-    def disconnected(self, table):
-        if self._first_disconnect:
-            self._first_disconnect = False
-            return
-
-        print("NetworkTabes disconnected from", table)
+            networktable.putValue(key, value)
+            print(key, value)
+    else:
+    
+        print("NetworkTabes disconnected from", networktable)
         shared_dict["robot_status"] = "disconnected"
         ws_server.send_message_to_all(json.dumps(shared_dict))
+
 
 networktable = networktables_client.setup(config["robot_ip"], config["networktable"], ConnectionListener)
 
