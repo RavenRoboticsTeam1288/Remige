@@ -7,6 +7,25 @@ html, body {
     max-height: 600px;
 }
 
+#center {
+    margin:auto;
+    width: 99%;
+}
+
+#idCenter {
+    margin:auto;
+    width: 85%;
+}
+
+tr, h2, span, td {
+    margin:auto;
+    width: 25%;
+}
+
+table {
+    border="1"
+}
+
 #main {
     position: absolute;
     width: 100%;
@@ -107,6 +126,38 @@ input[type="radio"]:checked + label {
     display: inline-block;
 }
 
+input[type="checkbox"] {
+    -moz-appearance: none; /* Hide the radio button, we are going to make it look like a <button> button */
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+}
+
+input[type="checkbox"] + label {
+    border: 3px solid #000;
+    border-radius: 0.5em;
+    background: #999;
+    padding: 0.25em;
+    margin: 0.125em 0.25em;
+    display: inline-block;
+}
+
+input[type="checkbox"]:disabled + label {
+    color: #777;
+    background: #aaa;
+    border-color: #777;
+}
+
+input[type="checkbox"]:checked + label {
+    border-color: #30093D;
+    border-radius: 0.5em;
+    background-color: #8513AB;
+    color: #fff;
+    padding: 0.25em;
+    margin: 0.125em 0.25em;
+    display: inline-block;
+}
+
 #streams {
     width: 50%;
     height: 100%;
@@ -124,8 +175,8 @@ input[type="radio"]:checked + label {
 #streams img {
     width: 46%;
     height: auto;
-    max-height: 276px;
-    max-width: 368px;
+    max-height: 400px;
+    max-width: 400px;
     border: 4px solid black;
     border-radius: 3px;
     margin: 4px 2% 0 4px;

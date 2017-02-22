@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -14,63 +14,109 @@
 			<div id="streams">
 				<span id="maximize" title="Toggle maximized"></span>
 			</div>
-			<form id="remige">
-				<h1>Team 1288 Remige Driver Station</h1>
-				<p>During Autonomous the robot should</p>
-				<section>
-					<h2>Move In Direction</h2>
-					<span>
-						<input id="left" name="DIRECTION" type="radio" value="left"></input>
-						<label for="left">Left</label>
-					</span>
-					<span>
-						<input id="right" name="DIRECTION" type="radio" value="right"></input>
-						<label for="right">Right</label>
-					</span>
-				</section>
-
-				<section>
-					<h2>Over Obstacle</h2>
-					<span>
-						<input id="low_bar" name="OBSTACLE_TYPE" type="radio" value="low_bar"></input>
-						<label for="low_bar">Low Bar</label>
-					</span>
-					<span>
-						<input id="teeter_totter" name="OBSTACLE_TYPE" type="radio" value="teeter_totter"></input>
-						<label for="teeter_totter">Teeter Totter</label>
-					</span>
-					<span>
-						<input id="portcullis" name="OBSTACLE_TYPE" type="radio" value="portcullis"></input>
-						<label for="portcullis">Portcullis</label>
-					</span>
-					<span>
-						<input id="rock_wall" name="OBSTACLE_TYPE" type="radio" value="rock_wall"></input>
-						<label for="rock_wall">Rock Wall</label>
-					</span>
-					<span>
-						<input id="rough_terrain" name="OBSTACLE_TYPE" type="radio" value="rough_terrain"></input>
-						<label for="rough_terrain">Rough Terrain</label>
-					</span>
-					<span>
-						<input id="moat" name="OBSTACLE_TYPE" type="radio" value="moat"></input>
-						<label for="moat">Moat</label>
-					</span>
-					<span>
-						<input id="ramparts" name="OBSTACLE_TYPE" type="radio" value="ramparts"></input>
-						<label for="ramparts">Ramparts</label>
-					</span>
-					<span>
-						<input id="sally_door" name="OBSTACLE_TYPE" type="radio" value="sally_door"></input>
-						<label for="sally_door">Sally Door</label>
-					</span>
-					<span>
-						<input id="drawbridge" name="OBSTACLE_TYPE" type="radio" value="drawbridge"></input>
-						<label for="drawbridge">Drawbridge</label>
-					</span>
-				</section>
-			</form>
-		</div>
-		<div id="status">
+			
+			
+            <form id="remige">
+			
+				<h1>Team 1288 Driver Station</h1>
+				<h2>Welcome to Remige</h2>
+				<br />
+				<br />
+            
+                <table id="center">
+                    <tr>
+                        <td><h2>Left</h2></td>
+                        <td><h2>Middle</h2></td>
+                        <td><h2>Right</h2></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+							<div id="idCenter">
+								<span>
+									<input id="left_place_gear" name="LEFT_CHOICE" type="radio" value="left_place_gear"></input>
+									<label for="left_place_gear">Place Gear</label>
+								</span>
+								<span>
+									<input id="left_only_cross" name="LEFT_CHOICE" type="radio" value="left_only_cross"></input>
+									<label for="left_only_cross">Cross</label>
+								</span>
+							</div>
+                        </td>
+                        
+                        <td>
+							<div id="idCenter">
+								<span>
+									<input id="middle_place_gear" name="MIDDLE_CHOICE" type="radio" value="middle_place_gear"></input>
+									<label for="middle_place_gear">Place Gear</label>
+								</span>
+							</div>
+                        </td>
+                        
+                        <td>
+                            <h4>Shooting</h4>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                        
+                        </td>
+                        
+                        <td>
+                            <h4>Cross On</h4>
+                        </td>
+                        
+                        <td>
+                            <span>
+                                <input id="right_shoot_gear" name="RIGHT_CHOICE" type="radio" value="right_shoot_gear"></input>
+                                <label for="right_shoot_gear">Place Gear</label>
+                            </span>
+                            <span>
+                                <input id="right_shoot_cross" name="RIGHT_CHOICE" type="radio" value="right_shoot_cross"></input>
+                                <label for="right_shoot_cross">Cross</label>
+                            </span>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td></td>
+                        <td>
+							<span>
+                                <input id="middle_cross_left" name="MIDDLE_PLACE" type="radio" value="middle_left_cross"></input>
+                                <label for="middle_cross_left">Left</label>
+                            </span>
+                            <span>
+                                <input id="middle_cross_none" name="MIDDLE_PLACE" type="radio" value="middle_cross_none"></input>
+                                <label for="middle_cross_none">None</label>
+                            </span>
+                            <span>
+                                <input id="middle_cross_right" name="MIDDLE_PLACE" type="radio" value="middle_right_cross"></input>
+                                <label for="middle_cross_right">Right</label>
+                            </span>
+						</td>
+                        <td><h4>No Shooting</h4></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+							<input type="reset" value="Reset" name="reset">
+						</td>
+                        <td></td>
+                        <td>
+                            <span>
+                                <input id="right_place_gear" name="RIGHT_CHOICE" type="radio" value="right_place_gear"></input>
+                                <label for="right_place_gear">Only Place Gear</label>
+                            </span>
+                            <span>
+                                <input id="right_only_cross" name="RIGHT_CHOICE" type="radio" value="right_only_cross"></input>
+                                <label for="right_only_cross">Only Cross</label>
+                            </span>
+                        </td>
+                    </tr>
+                </table>      
+            </form>
+        <div id="status">
 			<section>
 				<span>Remige Connection:</span> <span id="server-connection">Initializing WebSockets</span>
 			</section>
@@ -79,4 +125,4 @@
 			</section>
 		</div>
 	</body>
-</html>
+</html> 
