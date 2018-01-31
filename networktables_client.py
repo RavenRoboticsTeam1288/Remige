@@ -9,6 +9,9 @@ def setup(robot_ip, table_id, connection_listener_class=None):
     NetworkTable.initialize()
 
     table = NetworkTable.getTable(table_id)
+    table.delete("LEFT_CHOICE")
+    table.delete("MIDDLE_CHOICE")
+    table.delete("RIGHT_CHOICE")
 
     if connection_listener_class:
         table.addConnectionListener(connection_listener_class)
