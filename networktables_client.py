@@ -7,6 +7,8 @@ def setup(robot_ip, table_id, connection_listener_class=None):
     NetworkTable.setIPAddress(robot_ip)
     NetworkTable.setClientMode()
     NetworkTable.initialize()
+    #NetworkTable.globalDeleteAll()
+	
 
     table = NetworkTable.getTable(table_id)
     table.delete("LEFT_CHOICE")
