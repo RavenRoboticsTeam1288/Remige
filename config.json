@@ -7,10 +7,6 @@
 		{
 			"port": 5800,
 			"path": "/?action=stream"
-		},
-		{
-			"port": 5801,
-			"path": "/?action=stream"
 		}
 	]
 }

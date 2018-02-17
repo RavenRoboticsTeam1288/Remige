@@ -24,22 +24,14 @@
 				<br />
             
                 <table id="center">
-                    <tr>
-                        <td><h2>Left</h2></td>
-                        <td><h2>Middle</h2></td>
-                        <td><h2>Right</h2></td>
-                    </tr>
+					<h2>Choose a Starting Position</h2>
                     
                     <tr>
                         <td>
 							<div id="idCenter">
 								<span>
-									<input id="left_place_gear" name="LEFT_CHOICE" type="radio" value="left_place_gear"></input>
-									<label for="left_place_gear">Place Gear</label>
-								</span>
-								<span>
-									<input id="left_only_cross" name="LEFT_CHOICE" type="radio" value="left_only_cross"></input>
-									<label for="left_only_cross">Cross</label>
+									<input id="left" name="STARTPOS" type="radio" value="left"></input>
+									<label for="left">Left</label>
 								</span>
 							</div>
                         </td>
@@ -47,78 +39,63 @@
                         <td>
 							<div id="idCenter">
 								<span>
-									<input id="middle_place_gear" name="MIDDLE_CHOICE" type="radio" value="middle_place_gear"></input>
-									<label for="middle_place_gear">Place Gear</label>
+									<input id="middle" name="STARTPOS" type="radio" value="center"></input>
+									<label for="middle">Center</label>
+								</span>
+							</div>
+                        </td>
+						
+						<td>
+							<div id="idCenter">
+								<span>
+									<input id="right" name="STARTPOS" type="radio" value="right"></input>
+									<label for="right">Right</label>
 								</span>
 							</div>
                         </td>
                         
-                        <td>
-                            <h4>Shooting</h4>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td>
-                        
-                        </td>
-                        
-                        <td>
-                            <h4>Cross On</h4>
-                        </td>
-                        
-						<!--
-                        <td>
-                            <span>
-                                <input id="right_shoot_gear" name="RIGHT_CHOICE" type="radio" value="right_shoot_gear"></input>
-                                <label for="right_shoot_gear">Place Gear</label>
-                            </span>
-                            <span>
-                                <input id="right_shoot_cross" name="RIGHT_CHOICE" type="radio" value="right_shoot_cross"></input>
-                                <label for="right_shoot_cross">Cross</label>
-                            </span>
-                        </td>
-						-->
-                    </tr>
-                    
-                    <tr>
-                        <td></td>
-						<!--
-                        <td>
-							<span>
-                                <input id="middle_cross_left" name="MIDDLE_PLACE" type="radio" value="middle_left_cross"></input>
-                                <label for="middle_cross_left">Left</label>
-                            </span>
-                            <span>
-                                <input id="middle_cross_none" name="MIDDLE_PLACE" type="radio" value="middle_cross_none"></input>
-                                <label for="middle_cross_none">None</label>
-                            </span>
-                            <span>
-                                <input id="middle_cross_right" name="MIDDLE_PLACE" type="radio" value="middle_right_cross"></input>
-                                <label for="middle_cross_right">Right</label>
-                            </span>
+				
+                </table>
+				<br />
+				<br />
+				<table id="center">
+					<h3>Choose a Target</h3>
+					<tr>
+						<td>
+							<div id="idCenter">
+								<span>
+									<input id="switch" name="TARGET" type="radio" value="switch"></input>
+									<label for="switch">Switch</label>
+								</span>
+							</div>
 						</td>
-						-->
-                        <td><h4>No Shooting</h4></td>
-                    </tr>
-                    
-                    <tr>
-                        <td>
-							<input type="reset" value="Reset" name="reset">
+						
+						<td>
+							<div id="idCenter">
+								<span>
+									<input id="scale" name="TARGET" type="radio" value="scale"></input>
+									<label for="scale">Scale</label>
+								</span>
+							</div>
 						</td>
-                        <td></td>
-                        <td>
-                            <span>
-                                <input id="right_place_gear" name="RIGHT_CHOICE" type="radio" value="right_place_gear"></input>
-                                <label for="right_place_gear">Only Place Gear</label>
-                            </span>
-                            <span>
-                                <input id="right_only_cross" name="RIGHT_CHOICE" type="radio" value="right_only_cross"></input>
-                                <label for="right_only_cross">Only Cross</label>
-                            </span>
-                        </td>
-                    </tr>
-                </table>      
+						
+						<td>
+							<div id="idCenter">
+								<span>
+									<input id="line" name="TARGET" type="radio" value="line"></input>
+									<label for="line">Line Only</label>
+								</span>
+							</div>
+						</td>
+							
+					</tr>
+				</table>
+				<br />
+				<br />
+				<br />
+				<td>
+					<input type="reset" value="Reset" name="reset">
+				</td>
             </form>
         <div id="status">
 			<section>
